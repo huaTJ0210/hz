@@ -1,5 +1,5 @@
 export default {
-  base: "/docs/",
+  base: "/hz/",
   title: "華的文档", //站点标题
   description: "编程文档集合",
   themeConfig: {
