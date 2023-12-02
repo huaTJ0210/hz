@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as a}from"./chunks/framework.TViiy-gH.js";const _=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"fe/react/index.md","filePath":"fe/react/index.md"}'),r={name:"fe/react/index.md"};function n(c,o,s,d,i,f){return t(),a("div")}const m=e(r,[["render",n]]);export{_ as __pageData,m as default};
