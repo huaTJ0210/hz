@@ -13,6 +13,10 @@ export default {
     sidebar: {
       "/fe/": [
         {
+          text: "工程化",
+          items: [{ text: "vue组件库", link: "/fe/project/cpn-vue-lib" }],
+        },
+        {
           text: "基础知识",
           items: [
             { text: "html", link: "/fe/html/index" },
@@ -26,7 +30,6 @@ export default {
                 { text: "vue3", link: "/fe/vue/vue3" },
               ],
             },
-            { text: "vue3", link: "/fe/vue/vue3" },
             { text: "react", link: "/fe/js/index" },
           ],
         },
