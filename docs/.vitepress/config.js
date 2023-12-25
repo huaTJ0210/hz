@@ -20,8 +20,60 @@ export default {
           text: "基础知识",
           items: [
             { text: "html", link: "/fe/html/index" },
-            { text: "css", link: "/fe/css/index" },
-            { text: "javascript", link: "/fe/js/index" },
+            {
+              text: "css",
+              items: [
+                {
+                  text: "基础",
+                  link: "/fe/css/index",
+                },
+                {
+                  text: "布局",
+                  link: "/fe/css/layout",
+                },
+              ],
+            },
+            {
+              text: "javascript",
+              items: [
+                {
+                  text: "基础",
+                  link: "/fe/js/index",
+                },
+                {
+                  text: "数据类型",
+                  link: "/fe/js/data-type",
+                },
+                {
+                  text: "函数",
+                  link: "/fe/js/function",
+                },
+                {
+                  text: "数组",
+                  link: "/fe/js/array",
+                },
+                {
+                  text: "集合",
+                  link: "/fe/js/set",
+                },
+                {
+                  text: "面向对象",
+                  link: "/fe/js/oop",
+                },
+                {
+                  text: "object",
+                  link: "/fe/js/object",
+                },
+                {
+                  text: "class",
+                  link: "/fe/js/class",
+                },
+                {
+                  text: "模块",
+                  link: "/fe/js/module",
+                },
+              ],
+            },
             { text: "typescript", link: "/fe/ts/index" },
             {
               text: "vue",
