@@ -1,0 +1,1 @@
+import{_ as s,o as i,c as a,R as n}from"./chunks/framework.TViiy-gH.js";const c=JSON.parse('{"title":"Class","description":"","frontmatter":{},"headers":[],"relativePath":"fe/js/class.md","filePath":"fe/js/class.md"}'),h={name:"fe/js/class.md"},k=n("",53),l=[k];function p(t,e,E,r,d,g){return i(),a("div",null,l)}const F=s(h,[["render",p]]);export{c as __pageData,F as default};

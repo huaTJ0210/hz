@@ -1,0 +1,1 @@
+import{_ as e,o as l,c as i,R as t}from"./chunks/framework.TViiy-gH.js";const f=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"fe/vue/vue2.md","filePath":"fe/vue/vue2.md"}'),a={name:"fe/vue/vue2.md"},r=t("",2),o=[r];function u(c,_,s,n,d,p){return l(),i("div",null,o)}const h=e(a,[["render",u]]);export{f as __pageData,h as default};
