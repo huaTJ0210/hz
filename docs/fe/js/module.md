@@ -12,9 +12,9 @@
 // (1)将js文件中的代码进行包装
 function wrapper(script) {
   return (
-    "(function (exports, require, module, __filename, __dirname) {" +
+    '(function (exports, require, module, __filename, __dirname) {' +
     script +
-    "\n})"
+    '\n})'
   );
 }
 
@@ -40,7 +40,7 @@ const modulefunction = wrapper(`
 
 ###### 1.2.2 加载自定义模块的流程
 
-![加载自定义模块流程](./img/js/加载自定义模块流程.jpeg)
+![加载自定义模块流程](../img/js/加载自定义模块流程.jpeg)
 
 ###### 1.2.3 require 源码
 
@@ -74,11 +74,11 @@ function require(id) {
 ```javascript
 //----- a.js ------
 
-const { b } = require("./b.js");
+const { b } = require('./b.js');
 b();
 
 exports.a = function () {
-  console.log("func a in a.js");
+  console.log('func a in a.js');
 };
 
 /*
@@ -95,7 +95,7 @@ module.exports={
 
 //----- b.js-----
 
-const { a } = require("./a.js");
+const { a } = require('./a.js');
 /*
  + 执行a函数会报： Uncaught ReferenceError: a is not defined；
  + 原因：此时require('./a.js');是从缓存中获取的，module.exports只是一个空对象，并不包含a函数
@@ -109,17 +109,17 @@ setTimeout(() => {
 }, 0);
 
 const b = function () {
-  console.log("func b in b.js");
+  console.log('func b in b.js');
 };
 module.exports = {
-  b,
+  b
 };
 
 // main.js
-const { a } = require("./a.js");
-const { b } = require("./b.js");
+const { a } = require('./a.js');
+const { b } = require('./b.js');
 
-console.log("main.js");
+console.log('main.js');
 ```
 
 ##### 1.4 module.exports vs exports
@@ -131,7 +131,7 @@ console.log("main.js");
 ```javascript
 // 函数定义:exports仅仅是一个函数的形参名称
 function foo(exports) {
-  exports.name = "hello";
+  exports.name = 'hello';
 }
 // 函数调用
 const module = { exports: {}, loaded: false };
@@ -144,13 +144,13 @@ foo(module.exports);
 
 ```javascript
 exports.a = function () {
-  console.log("a");
+  console.log('a');
 };
 
-exports.b = "b";
+exports.b = 'b';
 
 const foo = function () {
-  console.log("foo");
+  console.log('foo');
 };
 
 /*
@@ -169,7 +169,7 @@ module.exports = {
 
 ```javascript
 // ES6模块 ：
-import { stat, exists, readFile } from "fs";
+import { stat, exists, readFile } from 'fs';
 /*
   上面代码的实质是从fs模块加载 3 个方法，其他方法不加载。
   这种加载称为“编译时加载”或者静态加载，即 ES6 可以在编译时就完成模块加载，
@@ -198,10 +198,10 @@ import { stat, exists, readFile } from "fs";
 > 如果在一个模块之中，先输入后输出同一个模块，`import`语句可以与`export`语句写在一起。
 
 ```javascript
-export { foo, bar } from "my_module";
+export { foo, bar } from 'my_module';
 
 // 可以简单理解为
-import { foo, bar } from "my_module";
+import { foo, bar } from 'my_module';
 export { foo, bar };
 ```
 

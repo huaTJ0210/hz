@@ -11,12 +11,12 @@ function Cat(name, color) {
   this.name = name;
   this.color = color;
   this.meow = function () {
-    console.log("喵喵");
+    console.log('喵喵');
   };
 }
 
-var cat1 = new Cat("大毛", "白色");
-var cat2 = new Cat("二毛", "黑色");
+var cat1 = new Cat('大毛', '白色');
+var cat2 = new Cat('二毛', '黑色');
 
 cat1.meow === cat2.meow; // false ：
 ```
@@ -30,15 +30,15 @@ function Cat(name, color) {
   this.name = name;
   this.color = color;
   this.meow = function () {
-    console.log("喵喵");
+    console.log('喵喵');
   };
 }
 
-var cat1 = new Cat("大毛", "白色");
-var cat2 = new Cat("二毛", "黑色");
+var cat1 = new Cat('大毛', '白色');
+var cat2 = new Cat('二毛', '黑色');
 
 // (1)原型对象：prototype每个函数都有该属性，对于构造函数来说，生成实例的时候，该属性会自动成为实例对象的原型
-Cat.prototype.color = "white";
+Cat.prototype.color = 'white';
 
 cat1.color; // white
 cat2.color; // white
@@ -59,7 +59,7 @@ function Shape() {
 Shape.prototype.move = function (x, y) {
   this.x += x;
   this.y += y;
-  console.info("Shape moved");
+  console.info('Shape moved');
 };
 // 子类继承父类的实例
 function Rectangle() {
@@ -155,8 +155,8 @@ Object.getPrototypeOf(a) === b;
 // (3) 使用一个对象创建另一个对象
 var A = {
   print: function () {
-    console.log("hello");
-  },
+    console.log('hello');
+  }
 };
 var B = Object.create(A);
 Object.getPrototypeOf(B) === A; // true
@@ -177,7 +177,7 @@ o2.isPrototypeOf(o3);
 ```javascript
 // 浅拷贝
 function shadowClone(source) {
-  if (source == undefined || typeof source !== "object") {
+  if (source == undefined || typeof source !== 'object') {
     return source;
   }
   const newObj = source instanceof Array ? [] : {};
@@ -194,9 +194,9 @@ function deepClone(source, target) {
   var tar = target || {};
   for (var key in source) {
     if (source.hasOwnProperty(key)) {
-      if (typeof source[key] === "object" && key !== null) {
+      if (typeof source[key] === 'object' && key !== null) {
         tar[key] =
-          Object.prototype.toString.call(source[key]) === "[object Array]"
+          Object.prototype.toString.call(source[key]) === '[object Array]'
             ? []
             : {};
         deepClone(source[key], tar[key]);
@@ -210,7 +210,7 @@ function deepClone(source, target) {
 
 // ES6
 function deepClone(source, hashMap = new WeakMap()) {
-  if (source == undefined || typeof source !== "object") {
+  if (source == undefined || typeof source !== 'object') {
     return source;
   }
   if (source instanceof Date) {
@@ -235,14 +235,14 @@ function deepClone(source, hashMap = new WeakMap()) {
 }
 
 var obj = {
-  name: "li",
+  name: 'li',
   age: 18,
-  hoddy: ["basketball", "running", "walking"],
+  hoddy: ['basketball', 'running', 'walking'],
   info: {
-    address: "beijing",
-    company: "lxl",
-    work: 18,
-  },
+    address: 'beijing',
+    company: 'lxl',
+    work: 18
+  }
 };
 // var newObj = deepClone(obj);
 // newObj.info.work = 34;
@@ -278,7 +278,7 @@ var Student = function (name) {
  （4） 开始执行构造函数内部的代码
 */
 
-var stu = new Student("li");
+var stu = new Student('li');
 
 // *** new命令简化的内部流程图 ***
 function _new(/* 构造函数 */ constructor, /* 构造函数参数 */ params) {
@@ -291,18 +291,18 @@ function _new(/* 构造函数 */ constructor, /* 构造函数参数 */ params) {
   // 执行构造函数
   var result = constructor.apply(context, args);
   // 如果返回结果是对象，就直接返回，否则返回 context 对象
-  return typeof result === "object" && result != null ? result : context;
+  return typeof result === 'object' && result != null ? result : context;
 }
 
 // 实例
 // var actor = _new(Person, '张三', 28);
 
 var person1 = {
-  name: "张三",
+  name: '张三',
   age: 38,
   greeting: function () {
-    console.log("Hi! I'm " + this.name + ".");
-  },
+    console.log("Hi! I'm " + this.name + '.');
+  }
 };
 
 var person2 = Object.create(person1);
@@ -314,10 +314,10 @@ console.dir(person2);
 ```javascript
 // (1) this 就是属性或者方法当前所在的对象
 var person = {
-  name: "张三",
+  name: '张三',
   describe: function () {
-    return "姓名" + this.name;
-  },
+    return '姓名' + this.name;
+  }
 };
 person.describe(); // "姓名：张三"
 
@@ -336,13 +336,13 @@ f() === window; // true
 f.call(obj) === obj; //true
 
 // (3-1) call方法可以调用对象的原生方法（继承得到的方法）
-Object.prototype.hasOwnProperty.call(obj, "toString");
+Object.prototype.hasOwnProperty.call(obj, 'toString');
 
 // (4) Function.prototype.apply(thisValue,[args1,args2,args3])
 // (4-1)找出数组中最大数
 var a = [10, 2, 4, 15, 9];
 Math.max.apply(null, a);
-Array.apply(null, ["a", , "b"]);
+Array.apply(null, ['a', , 'b']);
 
 // (5) Function.prototype.bind() ： 将函数体内的this绑定到某个对象上，返回一个新函数
 
@@ -350,7 +350,7 @@ var counter = {
   count: 0,
   inc: function () {
     this.count++;
-  },
+  }
 };
 var func = counter.inc.bind(counter);
 func();
@@ -404,14 +404,14 @@ function inherit(Child, Parent) {
 }
 
 function Parent() {
-  this.name = "li";
+  this.name = 'li';
 }
 // 原型方法
 Parent.prototype.say = function () {
   console.log(this.name);
 };
 // 静态属性
-Parent.className = "className";
+Parent.className = 'className';
 
 function Child() {
   Parent.call(this); //父类构造函数，继承实例属性
@@ -434,17 +434,15 @@ console.log(Child.className); // Child.__proto__
 
 [图片来源：深入理解 Class 和 extends 原理](https://juejin.cn/post/7001025002287923207)
 
-  <img src="../img/截屏2021-08-30 下午4.33.56.png" alt="截屏2021-08-30 下午4.33.56" style="zoom:50%;" />
-
 ```javascript
 function _inherits(subClass, superClass) {
   // 判断superClass的类型
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
+  if (typeof superClass !== 'function' && superClass !== null) {
+    throw new TypeError('Super expression must either be null or a function');
   }
   // 设置 subClass.prototype 的 [[Prototype]]指向 superClass.prototype 的 [[Prototype]]
   subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: { value: subClass, writable: true, configurable: true },
+    constructor: { value: subClass, writable: true, configurable: true }
   });
   // 设置 subClass 的 [[Prototype]] 指向 superClass
   if (superClass) _setPrototypeOf(subClass, superClass);
@@ -482,7 +480,7 @@ function _new(/* 构造函数 */ constructor, /* 构造函数参数 */ params) {
   // 执行构造函数
   var result = constructor.apply(context, args);
   // 如果返回结果是对象，就直接返回，否则返回 context 对象
-  return typeof result === "object" && result != null ? result : context;
+  return typeof result === 'object' && result != null ? result : context;
 }
 ```
 

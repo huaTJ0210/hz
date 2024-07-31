@@ -2,8 +2,6 @@
 
 ### 基础
 
-<!--more-->
-
 #### 函数概述
 
 > 函数是执行特定功能的一段可以反复调用的代码块；
@@ -79,7 +77,7 @@ var module = {
   x: 81,
   getX: function () {
     return this.x;
-  },
+  }
 };
 
 module.getX(); // 81
@@ -152,7 +150,7 @@ function timeoutify(fn, delay) {
   var tm = setTimeout(() => {
     clearTimeout(tm);
     tm = null;
-    fn(new Error("timeout"));
+    fn(new Error('timeout'));
   }, delay);
   return function () {
     if (tm) {
@@ -162,7 +160,7 @@ function timeoutify(fn, delay) {
   };
 }
 
-ajax("http://dxxxx.com/getuser", timeoutify(fn, 500));
+ajax('http://dxxxx.com/getuser', timeoutify(fn, 500));
 ```
 
 #### 作用域
@@ -241,7 +239,7 @@ ajax("http://dxxxx.com/getuser", timeoutify(fn, 500));
 > - 当函数执行时，会创建一个称为执行期上下文的内部对象。一个执行期上下文定义了一个函数执行时的环境，函数每次执行时对应的执行上下文都是独一无二的，所以多次调用一个函数会导致创建多个执行上下文，当函数执行完毕，执行上下文被销毁
 > - 在函数中查找变量，从其作用域链的顶端依次向下查找，从 Scope chain 的 0 位依次查到最后一位。
 
-![scopes](./img/js/scopes.png)
+![scopes](../img/js/scopes.png)
 
 ###### 1、 示例
 
@@ -263,25 +261,25 @@ a();
 
 > a()函数定义,其 scope 中存放 Global Object
 
-![a函数执行](./img/js/a函数定义.png)
+![a函数执行](../img/js/a函数定义.png)
 
 ###### 3、 a 函数执行
 
 > a 函数执行时，形成作用域链，Scope chain[0] 存放 Activation Object， Scope chain[1] 存放 Global Object
 
-![a函数执行](./img/js/a函数执行.png)
+![a函数执行](../img/js/a函数执行.png)
 
 ###### 4、 b 函数定义
 
 > b 函数定义，因为它是 a 函数内部的函数，因此其执行期上下文与 a 函数执行时是一样的；
 
-![b函数定义](./img/js/b函数定义.png)
+![b函数定义](../img/js/b函数定义.png)
 
 ###### 5、 b 函数执行
 
 > b 函数执行时，产生自己的 AO，在作用域链中将 a 函数的 AO 与 GO 储存位置下移，第 0 位存自己的 AO
 
-![b函数执行](./img/js/b函数执行.png)
+![b函数执行](../img/js/b函数执行.png)
 
 ###### 7、 最终
 
@@ -327,7 +325,7 @@ let a = 1;
 window.a; // undefined ; 挂载在全局scope的script下，见下图：
 ```
 
-![顶层对象](./img/js/顶层对象.png)
+![顶层对象](../img/js/顶层对象.png)
 
 #### 原始值与引用值
 
@@ -340,11 +338,11 @@ window.a; // undefined ; 挂载在全局scope的script下，见下图：
 ```javascript
 // (1)引用类型可以添加属性
 let person = new Object();
-person.name = "yi";
+person.name = 'yi';
 console.log(person.name);
 
 // (2) 基本类型不能添加属性
-let name = "zheng";
+let name = 'zheng';
 name.age = 18;
 console.log(name.age); // undefined
 ```
@@ -380,10 +378,10 @@ console.log(result); // 30
 
 //(2) 函数参数是引用类型也是值传递；
 function setName(obj) {
-  obj.name = "li";
+  obj.name = 'li';
   // 指针指向另外的区域
   obj = new Object();
-  obj.name = "wang";
+  obj.name = 'wang';
 }
 let person = new Object();
 setName(person);
@@ -460,11 +458,11 @@ function Person(name) {
   return {
     name: name,
     getAge: getAge,
-    setAge: setAge,
+    setAge: setAge
   };
 }
 
-var p1 = Person("张三");
+var p1 = Person('张三');
 p1.setAge(25);
 p1.getAge(); // 25
 ```
@@ -495,11 +493,11 @@ func(); // 30
 
 ```javascript
 document.body.innerHTML =
-  "<div id=div1>aaa</div>" +
-  "<div id=div2>bbb</div>" +
-  "<div id=div3>ccc</div>";
+  '<div id=div1>aaa</div>' +
+  '<div id=div2>bbb</div>' +
+  '<div id=div3>ccc</div>';
 for (var i = 1; i < 4; i++) {
-  document.getElementById("div" + i).addEventListener("click", function () {
+  document.getElementById('div' + i).addEventListener('click', function () {
     alert(i); // all are 4
   });
 }
@@ -507,7 +505,7 @@ for (var i = 1; i < 4; i++) {
 // 如何解决上述问题:
 for (var i = 1; i < 4; i++) {
   !(function (i) {
-    document.getElementById("div" + i).addEventListener("click", function () {
+    document.getElementById('div' + i).addEventListener('click', function () {
       alert(i); //
     });
   })(i);
@@ -570,7 +568,7 @@ function f1() {
 f1() === window; //true： 默认绑定
 
 function f2() {
-  "use strict"; //严格模式下
+  'use strict'; //严格模式下
   return this;
 }
 f2() === undefined; // true
@@ -584,7 +582,7 @@ var o = {
   prop: 37,
   f: function () {
     return this.prop;
-  },
+  }
 };
 console.log(o.f()); // 37 ： 使用o调用，属于隐式调用 this 绑定当前对象 o
 
@@ -603,7 +601,7 @@ console.log(o.f());
 var o = {
   f: function () {
     return this.a + this.b;
-  },
+  }
 };
 var p = Object.create(o);
 p.a = 1;
@@ -624,13 +622,13 @@ var o = {
   im: -1,
   get phase() {
     return Math.atan2(this.im + this.re);
-  },
+  }
 };
 
-Object.defineProperty(o, "modulus", {
+Object.defineProperty(o, 'modulus', {
   get: modulus,
   enumerable: true,
-  configurable: true,
+  configurable: true
 });
 
 console.log(o.phase, o.modulus); // -0.78 1.4142
@@ -678,7 +676,7 @@ function f() {
   return this.a;
 }
 // bind接收一个对象，当你想把函数的this指针修改时可以采用bind
-var g = f.bind({ a: "test" });
+var g = f.bind({ a: 'test' });
 console.log(g()); // test
 
 var o = { a: 37, f: f, g: g };
@@ -701,7 +699,7 @@ function foo() {
   console.log(this);
 }
 var obj = {
-  foo: foo,
+  foo: foo
 };
 obj.foo(); // 隐式调用，因此this指向obj;
 ```
@@ -726,7 +724,7 @@ function foo() {
   }, 100);
 }
 var obj = {
-  foo: foo,
+  foo: foo
 };
 obj.foo();
 ```
@@ -751,7 +749,7 @@ function foo() {
   }, 100);
 }
 var obj = {
-  foo: foo,
+  foo: foo
 };
 obj.foo();
 ```
@@ -778,8 +776,8 @@ function Timer() {
 
 var timer = new Timer();
 
-setTimeout(() => console.log("s1: ", timer.s1), 3100);
-setTimeout(() => console.log("s2: ", timer.s2), 3100);
+setTimeout(() => console.log('s1: ', timer.s1), 3100);
+setTimeout(() => console.log('s2: ', timer.s2), 3100);
 // s1: 3
 // s2: 0 // 实际的this.s2 每次都是NaN
 ```
@@ -790,11 +788,11 @@ setTimeout(() => console.log("s2: ", timer.s2), 3100);
 
 ```javascript
 var handler = {
-  id: "123456",
+  id: '123456',
 
   init: function () {
     document.addEventListener(
-      "click",
+      'click',
       // 当前this指向handler
       (event) => this.doSomething(event.type),
       false
@@ -802,8 +800,8 @@ var handler = {
   },
 
   doSomething: function (type) {
-    console.log("Handling " + type + " for " + this.id);
-  },
+    console.log('Handling ' + type + ' for ' + this.id);
+  }
 };
 ```
 
@@ -815,7 +813,7 @@ var handler = {
 // ES6
 function foo() {
   setTimeout(() => {
-    console.log("id:", this.id);
+    console.log('id:', this.id);
   }, 100);
 }
 
@@ -823,7 +821,7 @@ function foo() {
 function foo() {
   var _this = this;
   setTimeout(function () {
-    console.log("id:", _this.id);
+    console.log('id:', _this.id);
   }, 100);
 }
 // 转换后的 ES5 版本清楚地说明了，箭头函数里面根本没有自己的this，而是引用外层的this。
@@ -838,7 +836,7 @@ function foo() {
   return () => {
     return () => {
       return () => {
-        console.log("id:", this.id);
+        console.log('id:', this.id);
       };
     };
   };
@@ -861,13 +859,13 @@ const cat = {
   lives: 9,
   jumps: () => {
     this.lives--;
-  },
+  }
 };
 
 // 第二个场合是需要动态this的时候，也不应使用箭头函数。
-var button = document.getElementById("press");
-button.addEventListener("click", () => {
-  this.classList.toggle("on"); // 此时this指向了window
+var button = document.getElementById('press');
+button.addEventListener('click', () => {
+  this.classList.toggle('on'); // 此时this指向了window
 });
 ```
 
@@ -879,11 +877,11 @@ button.addEventListener("click", () => {
   2、如果只有一个return,可以省略{}
 */
 function foo() {
-  alert("abc");
+  alert('abc');
 }
 
 let foo = () => {
-  alert("abc");
+  alert('abc');
 };
 
 let arr = [12, 5, 8, 99, 44, 34];
@@ -1036,7 +1034,7 @@ function add() {
 }
 
 // 将函数转化为String类型，直接打印会打出函数的实现
-console.log("" + add(1)(2)(3));
+console.log('' + add(1)(2)(3));
 ```
 
 #### 实现深层获取对象的值
@@ -1053,11 +1051,11 @@ const getKey = (keys, target) => {
 const obj = {
   user: [
     {
-      comments: "123",
-    },
-  ],
+      comments: '123'
+    }
+  ]
 };
-const res = getKey(["user", 0, "comments"], obj);
+const res = getKey(['user', 0, 'comments'], obj);
 ```
 
 #### 实现函数的缓存
